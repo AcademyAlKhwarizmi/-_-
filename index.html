@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#050509">
+<title>الخوارزمي | منصة الرياضيات</title>
+<style>
+:root{--bg:#050509;--panel:rgba(16,16,27,.72);--panel2:rgba(255,255,255,.055);--text:#fff;--muted:#aaa9ba;--line:rgba(255,255,255,.09);--p:#8d63ff;--b:#3f65ff;--good:#7ef0c1;--shadow:0 25px 90px rgba(0,0,0,.45)}
+:root.light{--bg:#f5f6fb;--panel:rgba(255,255,255,.78);--panel2:rgba(20,20,40,.055);--text:#11121a;--muted:#686b7a;--line:rgba(20,20,40,.10);--p:#6944e8;--b:#3154df;--shadow:0 25px 70px rgba(43,43,85,.14)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:.35s;background-image:radial-gradient(circle at 12% 8%,rgba(116,72,232,.22),transparent 28%),radial-gradient(circle at 90% 35%,rgba(49,84,223,.18),transparent 30%),radial-gradient(circle at 45% 100%,rgba(142,104,255,.13),transparent 35%)}a{text-decoration:none;color:inherit}button,input{font:inherit}.wrap{width:min(1180px,92%);margin:auto}.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:-3;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:50px 50px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}.orb{position:fixed;border-radius:50%;filter:blur(8px);pointer-events:none;z-index:-2;opacity:.22;animation:float 10s ease-in-out infinite}.o1{width:130px;height:130px;background:#7547f1;right:4%;top:25%}.o2{width:80px;height:80px;background:#3154df;left:5%;top:50%;animation-delay:2s}.o3{width:100px;height:100px;background:#a36cff;right:20%;bottom:5%;animation-delay:4s}@keyframes float{50%{transform:translate(20px,-35px) scale(1.08)}}
+/* INTRO */
+#intro{position:fixed;inset:0;z-index:9999;background:#000;display:grid;place-items:center;overflow:hidden;transition:opacity .8s,visibility .8s}.intro-hide{opacity:0;visibility:hidden}.intro-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(130,90,255,.25),transparent 65%);filter:blur(25px);animation:pulse 2.8s infinite}.intro-box{text-align:center;position:relative;padding:30px}.intro-logo{width:148px;height:148px;margin:auto;border-radius:38px;display:block;object-fit:cover;background:#09090d;padding:7px;box-shadow:0 0 70px rgba(117,76,255,.55),0 0 0 1px rgba(255,255,255,.1);animation:logoIn 1.25s cubic-bezier(.16,1,.3,1), logoFloat 3.5s ease-in-out 1.25s infinite}.intro-title{font-size:clamp(32px,8vw,62px);font-weight:950;margin-top:22px;letter-spacing:-2px}.intro-sub{color:#92919f;margin:9px 0 26px}.voice-btn{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;padding:14px 25px;border-radius:18px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;box-shadow:0 12px 45px rgba(0,0,0,.35);transition:.25s}.voice-btn:hover{transform:translateY(-3px);border-color:rgba(141,99,255,.6);box-shadow:0 18px 60px rgba(99,63,230,.25)}.voice-note{font-size:12px;color:#6e6d79;margin-top:13px}@keyframes pulse{50%{transform:scale(1.32);opacity:.8}}@keyframes logoFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(1.5deg)}}@keyframes logoIn{from{transform:scale(.4) rotate(-18deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+/* HEADER */
+header{position:fixed;top:0;right:0;left:0;height:72px;z-index:900;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:950}.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--p),var(--b));box-shadow:0 8px 30px rgba(105,68,232,.35)}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;margin-top:3px}.nav-links{display:flex;gap:5px;align-items:center}.nav-link,.theme{border:0;background:transparent;color:var(--muted);padding:11px 13px;border-radius:12px;cursor:pointer}.nav-link:hover,.theme:hover{background:var(--panel2);color:var(--text)}.login{background:linear-gradient(135deg,var(--p),var(--b));color:#fff!important;font-weight:800}.hamb{display:none;border:1px solid var(--line);background:var(--panel);color:var(--text);width:43px;height:43px;border-radius:14px}
+/* HERO */
+main{padding-top:72px}.hero{min-height:calc(100svh - 72px);display:grid;align-items:center;padding:60px 0 45px}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(141,99,255,.28);background:rgba(141,99,255,.08);padding:8px 12px;border-radius:999px;color:#cfc4ff;font-size:13px}.dot{width:7px;height:7px;border-radius:50%;background:#7ef0c1;box-shadow:0 0 15px #7ef0c1}.hero h1{font-size:clamp(42px,6vw,82px);line-height:1.03;letter-spacing:-4px;margin:20px 0 18px;font-weight:950}.gradient{background:linear-gradient(90deg,var(--text),#9b7cff,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:650px;color:var(--muted);font-size:18px;line-height:1.9}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.primary,.secondary{border:0;padding:14px 20px;border-radius:16px;cursor:pointer;font-weight:800;transition:.25s}.primary{background:linear-gradient(135deg,var(--p),var(--b));color:#fff;box-shadow:0 15px 45px rgba(99,63,230,.25)}.secondary{background:var(--panel);border:1px solid var(--line);color:var(--text)}.primary:hover,.secondary:hover{transform:translateY(-4px)}.search{margin-top:28px;display:flex;max-width:650px;padding:7px;background:var(--panel);border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);backdrop-filter:blur(18px)}.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);padding:10px 14px}.search button{border:0;background:linear-gradient(135deg,var(--p),var(--b));color:#fff;border-radius:14px;padding:11px 17px;cursor:pointer}.hero-art{position:relative;min-height:480px;display:grid;place-items:center}.halo{position:absolute;width:min(430px,82vw);height:min(430px,82vw);border-radius:50%;border:1px solid rgba(141,99,255,.25);box-shadow:inset 0 0 80px rgba(112,76,232,.10),0 0 80px rgba(79,79,255,.12);animation:spin 20s linear infinite}.halo:before,.halo:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.08);inset:30px;animation:spin 14s linear reverse infinite}.halo:after{inset:75px;animation-duration:9s}.teacher{width:min(330px,68vw);aspect-ratio:1;border-radius:50%;object-fit:cover;position:relative;z-index:2;border:7px solid rgba(255,255,255,.08);box-shadow:0 0 80px rgba(116,72,232,.38);animation:teacherFloat 5s ease-in-out infinite}.teacher-card{position:absolute;z-index:4;bottom:25px;right:5%;background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(20px);padding:15px 18px;border-radius:20px;box-shadow:var(--shadow);animation:cardIn 1s .3s both}.teacher-card b{display:block}.teacher-card span{font-size:12px;color:var(--muted)}@keyframes spin{to{transform:rotate(360deg)}}@keyframes teacherFloat{50%{transform:translateY(-12px) rotate(1deg)}}@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+/* SECTIONS */
+section{padding:90px 0;scroll-margin-top:80px}.section-head{text-align:center;max-width:720px;margin:0 auto 35px}.section-head span{color:#9e8aff;font-size:13px;font-weight:800}.section-head h2{font-size:clamp(30px,5vw,52px);margin:10px 0}.section-head p{color:var(--muted);line-height:1.8}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--panel);border:1px solid var(--line);padding:24px;border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(18px);transition:.3s;position:relative;overflow:hidden}.card:before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:var(--p);filter:blur(45px);opacity:.08;left:-35px;bottom:-50px}.card:hover{transform:translateY(-8px);border-color:rgba(141,99,255,.32)}.icon{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,rgba(141,99,255,.2),rgba(49,84,223,.18));display:grid;place-items:center;font-size:23px;margin-bottom:20px}.card h3{margin-bottom:8px}.card p{color:var(--muted);font-size:14px;line-height:1.8}.platform{display:grid;grid-template-columns:1fr 1fr;gap:20px}.feature-list{display:grid;gap:12px}.feature{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px}.feature strong{display:block;margin-bottom:5px}.feature span{color:var(--muted);font-size:13px;line-height:1.7}.cta{border:1px solid var(--line);background:linear-gradient(135deg,rgba(141,99,255,.16),rgba(49,84,223,.08));border-radius:30px;padding:45px;text-align:center;overflow:hidden;position:relative}.cta h2{font-size:clamp(28px,5vw,48px);margin-bottom:12px}.cta p{color:var(--muted);margin-bottom:22px}.footer{padding:35px 0 100px;color:var(--muted);text-align:center;font-size:13px}
+/* PROPERTY SHEET */
+.sheet{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.58);backdrop-filter:blur(12px);display:flex;align-items:flex-end;opacity:0;visibility:hidden;transition:.35s}.sheet.open{opacity:1;visibility:visible}.sheet-panel{width:100%;max-height:82svh;background:var(--bg);border:1px solid var(--line);border-bottom:0;border-radius:30px 30px 0 0;padding:22px;transform:translateY(100%);transition:.45s cubic-bezier(.2,.9,.2,1);box-shadow:0 -30px 100px rgba(0,0,0,.45)}.sheet.open .sheet-panel{transform:none}.grab{width:48px;height:5px;background:var(--line);border-radius:99px;margin:0 auto 18px}.sheet-top{display:flex;justify-content:space-between;align-items:center}.close{border:1px solid var(--line);background:var(--panel);color:var(--text);width:40px;height:40px;border-radius:13px;cursor:pointer}.sheet-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.sheet-item{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:18px;text-align:center;cursor:pointer;transition:.25s}.sheet-item:hover{transform:translateY(-5px);border-color:rgba(141,99,255,.4)}.sheet-item b{display:block;margin-top:9px}.sheet-item span{font-size:11px;color:var(--muted)}
+/* BOTTOM NAV */
+.bottom{display:none;position:fixed;z-index:1500;bottom:10px;left:10px;right:10px;background:rgba(12,12,20,.84);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(22px);border-radius:23px;padding:8px;grid-template-columns:repeat(5,1fr);box-shadow:0 15px 55px rgba(0,0,0,.4)}.bottom button{border:0;background:transparent;color:#9695a4;padding:8px 2px;border-radius:15px;font-size:10px;cursor:pointer}.bottom button span{display:block;font-size:18px;margin-bottom:3px}.bottom button.active,.bottom button:hover{background:rgba(141,99,255,.14);color:#fff}.bottom .main{margin-top:-27px;width:58px;height:58px;border-radius:20px;background:linear-gradient(135deg,var(--p),var(--b));color:#fff;border:5px solid var(--bg);box-shadow:0 10px 35px rgba(105,68,232,.4)}
+/* MOTION */
+.reveal{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .8s,transform .8s}.reveal.show{opacity:1;transform:none}
+@media(max-width:900px){.hero-grid,.platform{grid-template-columns:1fr}.hero{text-align:center}.hero p,.search{margin-left:auto;margin-right:auto}.actions{justify-content:center}.hero-art{min-height:390px}.cards{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.hamb{display:block}.sheet-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){header{height:64px}.nav{height:64px}.brand-mark{width:38px;height:38px}.brand{font-size:14px}main{padding-top:64px}.hero{min-height:auto;padding:55px 0 25px}.hero h1{font-size:46px;letter-spacing:-2.5px}.hero p{font-size:15px}.search{margin-top:22px}.hero-art{min-height:330px}.teacher{width:235px}.teacher-card{bottom:0;right:0}.cards{grid-template-columns:1fr 1fr}.card{padding:18px;border-radius:19px}.card h3{font-size:15px}.card p{font-size:12px}.bottom{display:grid}.footer{padding-bottom:105px}.sheet-grid{grid-template-columns:repeat(2,1fr)}.sheet-panel{padding:18px}.cta{padding:30px 18px}section{padding:65px 0}}
+@media(orientation:landscape) and (max-height:560px){.hero{padding:30px 0}.hero-grid{grid-template-columns:1fr 1fr}.hero-art{min-height:280px}.teacher{width:220px}.bottom{display:none}}
+
+@media (max-width:700px){
+  #intro{background:radial-gradient(circle at 50% 42%,#17112d 0%,#050507 38%,#000 78%);}
+  #intro:before,#intro:after{content:"";position:absolute;inset:-30%;border:1px solid rgba(145,105,255,.10);border-radius:50%;animation:mobileOrbit 9s linear infinite;transform:rotate(18deg);}
+  #intro:after{inset:-45%;animation-duration:14s;animation-direction:reverse;border-color:rgba(49,84,223,.08);}
+  .intro-glow{width:330px;height:330px;filter:blur(35px);background:radial-gradient(circle,rgba(125,78,255,.38),rgba(49,84,223,.08) 42%,transparent 70%);animation:mobileGlow 4s ease-in-out infinite;}
+  .intro-box{padding:22px 18px;width:100%;}
+  .intro-logo{width:154px;height:154px;border-radius:44px;box-shadow:0 0 35px rgba(117,76,255,.45),0 0 100px rgba(117,76,255,.20),inset 0 0 0 1px rgba(255,255,255,.12);}
+  .intro-title{font-size:44px;margin-top:24px;text-shadow:0 0 25px rgba(141,99,255,.35);}
+  .intro-sub{font-size:14px;margin:8px 0 30px;}
+  .voice-btn{width:min(92vw,340px);justify-content:center;padding:16px 20px;border-radius:20px;font-size:15px;background:linear-gradient(135deg,rgba(141,99,255,.22),rgba(49,84,223,.12));backdrop-filter:blur(18px);}
+  .voice-btn:active{transform:scale(.96);}
+  .voice-note{font-size:11px;}
+  @keyframes mobileOrbit{to{transform:rotate(378deg)}}
+  @keyframes mobileGlow{50%{transform:scale(1.16);opacity:.75}}
+}
+
+/* PERFORMANCE / LOW-END MOBILE */
+@media (max-width:700px){
+  body{background-image:radial-gradient(circle at 50% 0,rgba(116,72,232,.16),transparent 38%);}
+  .bg-grid{opacity:.08;background-size:70px 70px;}
+  .orb{filter:blur(5px);opacity:.14;animation-duration:18s;}
+  .o2,.o3{display:none;}
+  header,.search,.card,.feature,.teacher-card,.bottom,.sheet-panel{backdrop-filter:none;-webkit-backdrop-filter:none;}
+  .card:before{filter:blur(25px);}
+  .halo:before,.halo:after{display:none;}
+  .halo{animation-duration:35s;box-shadow:0 0 35px rgba(79,79,255,.10);}
+  .teacher{box-shadow:0 0 45px rgba(116,72,232,.25);animation-duration:8s;}
+}
+@media (max-width:700px) and (max-device-width:480px){
+  .intro-glow{filter:blur(18px);animation:none;opacity:.8;}
+  #intro:before,#intro:after{display:none;}
+  .intro-logo{box-shadow:0 0 35px rgba(117,76,255,.35),inset 0 0 0 1px rgba(255,255,255,.1);animation:logoIn .7s ease-out;}
+  .intro-title{text-shadow:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+}
+.low-power .bg-grid,.low-power .orb{display:none;}
+.low-power .halo{animation:none;box-shadow:0 0 28px rgba(79,79,255,.08);}
+.low-power .teacher{animation:none;box-shadow:0 0 35px rgba(116,72,232,.20);}
+.low-power .intro-glow{animation:none;filter:blur(12px);}
+.low-power #intro:before,.low-power #intro:after{display:none;}
+.low-power .card,.low-power .feature{box-shadow:0 8px 30px rgba(0,0,0,.18);}
+</style>
+</head>
+<body>
+<div id="intro" aria-label="مقدمة الخوارزمي">
+  <div class="intro-glow"></div>
+  <div class="intro-box">
+    <img class="intro-logo" src="assets/teacher.png" alt="الخوارزمي">
+    <div class="intro-title">الخوارزمي</div>
+    <div class="intro-sub">منصة الرياضيات الذكية</div>
+    <button class="voice-btn" id="startBtn"><span>🔊</span> ابدأ بصوت الخوارزمي</button>
+    <div class="voice-note">سيظهر صوت الترحيب تلقائيًا بعد الضغط — مناسب للموبايل</div>
+    <div class="voice-note">اضغط للبدء وتشغيل الترحيب الصوتي</div>
+  </div>
+</div>
+<div class="bg-grid"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<header><div class="wrap nav">
+  <a href="#home" class="brand"><span class="brand-mark">خ</span><span>الخوارزمي<small>منصة الرياضيات</small></span></a>
+  <nav class="nav-links">
+    <a class="nav-link" href="#home">الرئيسية</a><a class="nav-link" href="#what">ماذا أقدم؟</a><a class="nav-link" href="#platform">المنصة</a><a class="nav-link" href="#extras">الإضافات</a><button class="theme" id="themeBtn">☾</button><a class="nav-link login" href="auth.html">تسجيل الدخول</a>
+  </nav>
+  <button class="hamb" onclick="openSheet()">☰</button>
+</div></header>
+<main id="home">
+<section class="hero"><div class="wrap hero-grid">
+ <div class="reveal">
+  <span class="eyebrow"><i class="dot"></i> جاهز تتعلم الرياضيات بطريقة مختلفة؟</span>
+  <h1>الخوارزمي<br><span class="gradient">يخلّي الرياضيات أبسط.</span></h1>
+  <p>منصة رياضيات متكاملة تجمع الاختبارات، الفيديوهات، ملفات PDF، المراجعة، والمساعد الذكي في تجربة واحدة سريعة وفخمة.</p>
+  <div class="search"><input id="searchInput" placeholder="ابحث عن درس، فيديو، اختبار أو موضوع رياضيات..."/><button onclick="searchNow()">بحث</button></div>
+  <div class="actions"><a class="primary" href="auth.html">🚀 ابدأ الآن</a><a class="secondary" href="#what">اكتشف ماذا أقدم</a></div>
+ </div>
+ <div class="hero-art reveal"><div class="halo"></div><img class="teacher" src="assets/teacher.png" alt="مدرس الخوارزمي"><div class="teacher-card"><b>الأستاذ أمير طلعت</b><span>صوت الخوارزمي • معك خطوة بخطوة</span></div></div>
+</div></section>
+<section id="what"><div class="wrap"><div class="section-head reveal"><span>ماذا أقدم؟</span><h2>كل ما تحتاجه للرياضيات</h2><p>مش مجرد اختبارات؛ الخوارزمي مساحة كاملة للمذاكرة والتدريب والمتابعة.</p></div><div class="cards">
+ <article class="card reveal"><div class="icon">📝</div><h3>اختبارات ذكية</h3><p>اختبارات رياضيات منظمة مع نتائج ومتابعة لمستواك.</p></article>
+ <article class="card reveal"><div class="icon">▶️</div><h3>فيديوهات</h3><p>محتوى فيديو مرتب حسب المرحلة والموضوع لتراجع في أي وقت.</p></article>
+ <article class="card reveal"><div class="icon">📄</div><h3>PDF وملفات</h3><p>مذكرات ومراجعات وملفات مساعدة في مكان واحد.</p></article>
+ <article class="card reveal"><div class="icon">🤖</div><h3>AI الخوارزمي</h3><p>اسأل المساعد الذكي عن السؤال أو الفيديو وخد شرحًا مناسبًا.</p></article>
+</div></div></section>
+<section id="platform"><div class="wrap"><div class="section-head reveal"><span>المنصة</span><h2>تجربة واحدة، كل الأدوات</h2></div><div class="platform"><div class="feature-list">
+ <div class="feature reveal"><div class="icon">🎯</div><div><strong>مسار مذاكرة واضح</strong><span>اختار مرحلتك وابدأ من المحتوى المناسب لك بدل ما تتوه بين الصفحات.</span></div></div>
+ <div class="feature reveal"><div class="icon">📊</div><div><strong>متابعة مستواك</strong><span>نتائج الاختبارات تساعدك تعرف نقاط القوة والحاجات اللي محتاجة مراجعة.</span></div></div>
+ <div class="feature reveal"><div class="icon">💬</div><div><strong>شات داخل المحتوى</strong><span>تقدر تسأل عن الفيديو أو المادة نفسها وتكمل مذاكرتك بدون ما تخرج من الصفحة.</span></div></div>
+</div><div class="cta reveal"><h2>جاهز تبدأ؟</h2><p>ادخل حسابك واستكشف الاختبارات والمحتوى المتاح لك.</p><a class="primary" href="auth.html">تسجيل الدخول</a></div></div></div></section>
+<section id="extras"><div class="wrap"><div class="section-head reveal"><span>الإضافات</span><h2>أدوات صغيرة، فرق كبير</h2><p>الوصول السريع للـAI، الفيديوهات، الملفات، والاختبارات من شريط الخصائص.</p></div><div class="cards"><article class="card reveal"><div class="icon">🔊</div><h3>صوت الخوارزمي</h3><p>ترحيب صوتي عند فتح المنصة باستخدام صوت الجهاز المتاح.</p></article><article class="card reveal"><div class="icon">🌙</div><h3>ليل / نهار</h3><p>غيّر مظهر المنصة واحفظ اختيارك على جهازك.</p></article><article class="card reveal"><div class="icon">📱</div><h3>متجاوب بالكامل</h3><p>مصمم للموبايل والتابلت والكمبيوتر بالطولي والعرضي.</p></article><article class="card reveal"><div class="icon">✨</div><h3>Motion UI</h3><p>انتقالات ناعمة وظهور تدريجي وحركات تفاعلية بدون مبالغة.</p></article></div></div></section>
+<section><div class="wrap"><div class="cta reveal"><h2>ابدأ رحلتك مع الخوارزمي</h2><p>رياضيات، تدريب، محتوى، وذكاء اصطناعي في تجربة واحدة.</p><a class="primary" href="auth.html">🚀 دخول المنصة</a></div></div></section>
+</main>
+<footer class="footer">© 2026 الخوارزمي • منصة الرياضيات</footer>
+<div class="bottom"><button onclick="location.href='#home'"><span>⌂</span>الرئيسية</button><button onclick="location.href='#what'"><span>📚</span>المحتوى</button><button class="main" onclick="openSheet()"><span>✦</span>الخصائص</button><button onclick="location.href='#extras'"><span>✨</span>الإضافات</button><button onclick="location.href='auth.html'"><span>↪</span>دخول</button></div>
+<div class="sheet" id="sheet" onclick="if(event.target===this)closeSheet()"><div class="sheet-panel"><div class="grab"></div><div class="sheet-top"><div><b>خصائص الخوارزمي</b><div style="color:var(--muted);font-size:12px;margin-top:4px">كل الأدوات في مكان واحد</div></div><button class="close" onclick="closeSheet()">×</button></div><div class="sheet-grid">
+ <div class="sheet-item" onclick="location.href='#what'"><span style="font-size:25px">📚</span><b>المحتوى</b><span>دروس ومراجعات</span></div>
+ <div class="sheet-item" onclick="alert('قسم الفيديوهات جاهز للربط مع محتوى Supabase من لوحة التحكم.')"><span style="font-size:25px">▶️</span><b>الفيديوهات</b><span>شرح ومراجعة</span></div>
+ <div class="sheet-item" onclick="alert('قسم ملفات PDF جاهز للربط مع ملفات المنصة.')"><span style="font-size:25px">📄</span><b>PDF</b><span>مذكرات وملفات</span></div>
+ <div class="sheet-item" onclick="location.href='tests.html'"><span style="font-size:25px">📝</span><b>الاختبارات</b><span>اختبر نفسك</span></div>
+ <div class="sheet-item" onclick="location.href='ai.html'"><span style="font-size:25px">🤖</span><b>AI</b><span>اسأل الخوارزمي</span></div>
+ <div class="sheet-item" onclick="location.href='#platform'"><span style="font-size:25px">🏫</span><b>عن المنصة</b><span>الخوارزمي</span></div>
+ <div class="sheet-item" onclick="location.href='auth.html'"><span style="font-size:25px">🔐</span><b>تسجيل الدخول</b><span>حسابك</span></div>
+ <div class="sheet-item" onclick="toggleTheme()"><span style="font-size:25px">🌓</span><b>ليل / نهار</b><span>تغيير المظهر</span></div>
+</div></div></div>
+<script>
+(function(){
+'use strict';
+const root=document.documentElement, body=document.body, intro=document.getElementById('intro'), startBtn=document.getElementById('startBtn');
+const isMobile=matchMedia('(max-width:700px)').matches;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const lowPower=isMobile && (navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4 || navigator.deviceMemory&&navigator.deviceMemory<=4);
+if(reduced||lowPower) root.classList.add('low-power');
+body.style.overflow='hidden';
+
+const welcomeAudio=new Audio('assets/audio/alkhwarizmi-welcome.wav');
+welcomeAudio.preload='none'; welcomeAudio.playsInline=true;
+let started=false;
+startBtn.addEventListener('click',function(){
+ if(started)return; started=true;
+ welcomeAudio.currentTime=0;
+ const play=welcomeAudio.play(); if(play)play.catch(()=>{});
+ startBtn.innerHTML='<span>✓</span> تم تشغيل صوت الخوارزمي';
+ setTimeout(function(){intro.classList.add('intro-hide');body.style.overflow='auto';},reduced?250:650);
+},{passive:true});
+
+const saved=localStorage.getItem('alk-theme');
+if(saved==='light')root.classList.add('light');
+function syncTheme(){const b=document.getElementById('themeBtn');if(b)b.textContent=root.classList.contains('light')?'☀':'☾';}
+function toggleTheme(){root.classList.toggle('light');localStorage.setItem('alk-theme',root.classList.contains('light')?'light':'dark');syncTheme();}
+window.toggleTheme=toggleTheme; document.getElementById('themeBtn').onclick=toggleTheme; syncTheme();
+function openSheet(){document.getElementById('sheet').classList.add('open');body.style.overflow='hidden'}
+function closeSheet(){document.getElementById('sheet').classList.remove('open');body.style.overflow='auto'}
+window.openSheet=openSheet;window.closeSheet=closeSheet;
+function searchNow(){const q=document.getElementById('searchInput').value.trim();if(!q){document.getElementById('searchInput').focus();return}location.href='tests.html?search='+encodeURIComponent(q)}
+window.searchNow=searchNow;
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')searchNow()},{passive:true});
+
+if(!reduced){
+ const io=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}},{threshold:.08,rootMargin:'0px 0px -40px'});
+ document.querySelectorAll('.reveal').forEach((el,i)=>{if(!lowPower)el.style.transitionDelay=(Math.min(i%4,3)*55)+'ms';io.observe(el)});
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()},{passive:true});
+})();
+</script>
+</body>
+</html>
