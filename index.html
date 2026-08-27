@@ -16,6 +16,10 @@
 
 <style>
 
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
     --bg:#050509;
     --panel:rgba(16,16,27,.72);
@@ -23,80 +27,99 @@
     --text:#fff;
     --muted:#aaa9ba;
     --line:rgba(255,255,255,.09);
+
     --p:#8d63ff;
     --b:#3f65ff;
+
     --good:#7ef0c1;
-    --shadow:0 25px 90px rgba(0,0,0,.45)
+
+    --shadow:
+        0 25px 90px rgba(0,0,0,.45);
 }
 
 :root.light{
     --bg:#f5f6fb;
-    --panel:rgba(255,255,255,.78);
+    --panel:rgba(255,255,255,.82);
     --panel2:rgba(20,20,40,.055);
     --text:#11121a;
     --muted:#686b7a;
     --line:rgba(20,20,40,.10);
+
     --p:#6944e8;
     --b:#3154df;
-    --shadow:0 25px 70px rgba(43,43,85,.14)
+
+    --shadow:
+        0 25px 70px rgba(43,43,85,.14);
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
     margin:0;
-    padding:0
+    padding:0;
 }
 
 html{
-    scroll-behavior:smooth
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Tahoma,sans-serif;
-    background:var(--bg);
+    font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
+
+    background-color:var(--bg);
+
     color:var(--text);
+
     overflow-x:hidden;
-    transition:.35s;
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
 
     background-image:
         radial-gradient(
             circle at 12% 8%,
-            rgba(116,72,232,.22),
+            rgba(116,72,232,.18),
             transparent 28%
         ),
         radial-gradient(
             circle at 90% 35%,
-            rgba(49,84,223,.18),
+            rgba(49,84,223,.14),
             transparent 30%
-        ),
-        radial-gradient(
-            circle at 45% 100%,
-            rgba(142,104,255,.13),
-            transparent 35%
-        )
+        );
 }
 
 a{
     text-decoration:none;
-    color:inherit
+    color:inherit;
 }
 
 button,
 input{
-    font:inherit
+    font:inherit;
 }
 
-.wrap{
-    width:min(1180px,92%);
-    margin:auto
-}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 .bg-grid{
     position:fixed;
     inset:0;
+
     pointer-events:none;
+
     z-index:-3;
-    opacity:.18;
+
+    opacity:.13;
 
     background-image:
         linear-gradient(
@@ -116,208 +139,246 @@ input{
             to bottom,
             #000,
             transparent 90%
-        )
+        );
 }
 
 .orb{
     position:fixed;
+
     border-radius:50%;
-    filter:blur(8px);
+
     pointer-events:none;
+
     z-index:-2;
-    opacity:.22;
-    animation:float 10s ease-in-out infinite
+
+    opacity:.15;
+
+    filter:blur(8px);
+
+    animation:
+        float 12s ease-in-out infinite;
 }
 
 .o1{
     width:130px;
     height:130px;
+
     background:#7547f1;
+
     right:4%;
-    top:25%
+    top:25%;
 }
 
 .o2{
     width:80px;
     height:80px;
+
     background:#3154df;
+
     left:5%;
     top:50%;
-    animation-delay:2s
+
+    animation-delay:2s;
 }
 
 .o3{
     width:100px;
     height:100px;
+
     background:#a36cff;
+
     right:20%;
     bottom:5%;
-    animation-delay:4s
+
+    animation-delay:4s;
 }
 
 @keyframes float{
 
     50%{
-        transform:translate(20px,-35px) scale(1.08)
+        transform:
+            translate3d(15px,-25px,0)
+            scale(1.05);
     }
 
 }
 
 
-/* ======================================================
+/* =========================================================
    INTRO
-====================================================== */
+========================================================= */
 
 #intro{
+
     position:fixed;
+
     inset:0;
+
     z-index:9999;
 
-    background:#000;
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            #17112d 0%,
+            #050507 38%,
+            #000 78%
+        );
 
     display:grid;
+
     place-items:center;
 
     overflow:hidden;
 
+    opacity:1;
+
+    visibility:visible;
+
     transition:
-        opacity .8s,
-        visibility .8s
+        opacity .45s ease,
+        visibility .45s ease;
 }
 
-.intro-hide{
+#intro.intro-hide{
+
     opacity:0;
+
     visibility:hidden;
-    pointer-events:none
+
+    pointer-events:none;
 }
 
 .intro-glow{
+
     position:absolute;
 
-    width:420px;
-    height:420px;
+    width:360px;
+    height:360px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(130,90,255,.25),
-            transparent 65%
+            rgba(125,78,255,.30),
+            rgba(49,84,223,.06) 45%,
+            transparent 70%
         );
 
-    filter:blur(25px);
+    filter:blur(24px);
 
-    animation:pulse 2.8s infinite
+    animation:
+        introGlow 4s ease-in-out infinite;
 }
 
 .intro-box{
-    text-align:center;
+
     position:relative;
-    padding:30px;
-    z-index:2
+
+    z-index:2;
+
+    width:min(100%,500px);
+
+    padding:25px;
+
+    text-align:center;
 }
 
 .intro-logo{
-    width:148px;
-    height:148px;
 
-    margin:auto;
-
-    border-radius:38px;
+    width:150px;
+    height:150px;
 
     display:block;
 
+    margin:auto;
+
     object-fit:cover;
+
+    border-radius:40px;
 
     background:#09090d;
 
     padding:7px;
 
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
     box-shadow:
-        0 0 70px rgba(117,76,255,.55),
-        0 0 0 1px rgba(255,255,255,.1);
+        0 0 45px rgba(117,76,255,.45),
+        0 0 100px rgba(117,76,255,.16);
 
     animation:
-        logoIn 1.25s cubic-bezier(.16,1,.3,1),
-        logoFloat 3.5s ease-in-out 1.25s infinite
+        logoIn .75s
+        cubic-bezier(.16,1,.3,1);
 }
 
 .intro-title{
-    font-size:clamp(32px,8vw,62px);
-
-    font-weight:950;
 
     margin-top:22px;
 
-    letter-spacing:-2px;
+    font-size:
+        clamp(42px,9vw,62px);
 
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #a98aff,
-            #6684ff,
-            #fff
-        );
+    line-height:1;
 
-    -webkit-background-clip:text;
-    background-clip:text;
+    font-weight:950;
 
-    color:transparent;
+    letter-spacing:-3px;
 
-    background-size:200% auto;
+    text-shadow:
+        0 0 25px
+        rgba(141,99,255,.30);
 
     animation:
-        introTextGlow 4s linear infinite
+        introText .7s
+        .1s
+        both;
 }
 
 .intro-sub{
-    color:#a9a6ba;
 
-    margin:9px auto 26px;
+    margin-top:12px;
 
-    max-width:500px;
+    color:#b9b3d8;
+
+    font-size:15px;
 
     line-height:1.9;
 
-    font-size:15px
-}
+    max-width:400px;
 
+    margin-left:auto;
+    margin-right:auto;
 
-/* مدح الخوارزمي */
-
-.intro-praise{
-    max-width:650px;
-
-    margin:0 auto 25px;
-
-    color:#d9d5ec;
-
-    font-size:14px;
-
-    line-height:2;
-
-    padding:0 10px
-}
-
-.intro-praise strong{
-    color:#b29aff
+    animation:
+        introText .7s
+        .18s
+        both;
 }
 
 .voice-btn{
-    border:1px solid rgba(255,255,255,.14);
+
+    margin-top:25px;
+
+    border:
+        1px solid
+        rgba(141,99,255,.28);
 
     background:
         linear-gradient(
             135deg,
-            rgba(141,99,255,.28),
-            rgba(49,84,223,.18)
+            rgba(141,99,255,.20),
+            rgba(49,84,223,.12)
         );
 
     color:#fff;
 
-    padding:15px 28px;
+    padding:
+        15px 25px;
+
+    min-width:230px;
 
     border-radius:18px;
 
@@ -331,158 +392,104 @@ input{
 
     gap:10px;
 
-    min-width:240px;
+    font-weight:800;
 
     box-shadow:
-        0 12px 45px rgba(0,0,0,.35),
-        0 0 35px rgba(116,72,232,.12);
+        0 12px 45px
+        rgba(0,0,0,.25);
 
     transition:
-        transform .2s,
-        box-shadow .2s,
-        border-color .2s;
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
 
-    position:relative;
-
-    overflow:hidden;
-
-    font-weight:800
-}
-
-.voice-btn:before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    bottom:0;
-    width:80px;
-
-    right:-100px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.22),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    animation:buttonShine 3s infinite
+    animation:
+        introText .7s
+        .25s
+        both;
 }
 
 .voice-btn:hover{
-    transform:translateY(-4px) scale(1.02);
 
-    border-color:
-        rgba(141,99,255,.7);
+    transform:translateY(-3px);
 
     box-shadow:
-        0 18px 60px rgba(99,63,230,.3),
-        0 0 35px rgba(116,72,232,.18)
+        0 18px 50px
+        rgba(99,63,230,.25);
 }
 
 .voice-btn:active{
+
     transform:
-        translateY(1px)
-        scale(.95);
-
-    box-shadow:
-        0 7px 20px rgba(99,63,230,.25)
+        scale(.96);
 }
 
-.voice-btn.loading{
-    pointer-events:none;
-    opacity:.8
+.intro-note{
+
+    margin-top:15px;
+
+    color:#77748b;
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    animation:
+        introText .7s
+        .3s
+        both;
 }
 
-.voice-btn.success{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(42,180,135,.32),
-            rgba(50,130,255,.2)
-        );
-
-    border-color:
-        rgba(126,240,193,.5)
-}
-
-.voice-btn.error{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(220,70,90,.25),
-            rgba(100,40,100,.18)
-        );
-
-    border-color:
-        rgba(255,100,120,.5)
-}
-
-@keyframes buttonShine{
-
-    0%{
-        right:-100px
-    }
-
-    55%,100%{
-        right:130%
-    }
-
-}
-
-@keyframes pulse{
-
-    50%{
-        transform:scale(1.32);
-        opacity:.8
-    }
-
-}
-
-@keyframes logoFloat{
+@keyframes introGlow{
 
     0%,100%{
-        transform:translateY(0) rotate(0)
+        transform:scale(1);
+        opacity:.75;
     }
 
     50%{
-        transform:translateY(-10px) rotate(1.5deg)
+        transform:scale(1.12);
+        opacity:1;
     }
-
 }
 
 @keyframes logoIn{
 
     from{
-        transform:scale(.4) rotate(-18deg);
-        opacity:0
+        opacity:0;
+        transform:
+            scale(.65)
+            rotate(-8deg);
     }
 
     to{
-        transform:scale(1) rotate(0);
-        opacity:1
+        opacity:1;
+        transform:
+            scale(1)
+            rotate(0);
     }
-
 }
 
-@keyframes introTextGlow{
+@keyframes introText{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
 
     to{
-        background-position:200% center
+        opacity:1;
+        transform:translateY(0);
     }
-
 }
 
 
-/* ======================================================
+/* =========================================================
    HEADER
-====================================================== */
+========================================================= */
 
 header{
+
     position:fixed;
 
     top:0;
@@ -494,19 +501,19 @@ header{
     z-index:900;
 
     background:
-        color-mix(
-            in srgb,
-            var(--bg) 72%,
-            transparent
-        );
+        rgba(5,5,9,.72);
 
-    backdrop-filter:blur(22px);
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
 
     border-bottom:
-        1px solid var(--line)
+        1px solid
+        var(--line);
 }
 
 .nav{
+
     height:72px;
 
     display:flex;
@@ -515,24 +522,36 @@ header{
 
     justify-content:space-between;
 
-    gap:20px
+    gap:20px;
+}
+
+.wrap{
+
+    width:min(1180px,92%);
+
+    margin:auto;
 }
 
 .brand{
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
 
-    font-weight:950
+    font-weight:950;
 }
 
 .brand-mark{
+
     width:42px;
     height:42px;
 
     border-radius:14px;
 
     display:grid;
+
     place-items:center;
 
     background:
@@ -543,10 +562,12 @@ header{
         );
 
     box-shadow:
-        0 8px 30px rgba(105,68,232,.35)
+        0 8px 30px
+        rgba(105,68,232,.30);
 }
 
 .brand small{
+
     display:block;
 
     color:var(--muted);
@@ -555,37 +576,47 @@ header{
 
     font-weight:500;
 
-    margin-top:3px
+    margin-top:3px;
 }
 
 .nav-links{
+
     display:flex;
+
     gap:5px;
-    align-items:center
+
+    align-items:center;
 }
 
 .nav-link,
 .theme{
+
     border:0;
 
     background:transparent;
 
     color:var(--muted);
 
-    padding:11px 13px;
+    padding:
+        11px 13px;
 
     border-radius:12px;
 
-    cursor:pointer
+    cursor:pointer;
+
+    transition:.2s ease;
 }
 
 .nav-link:hover,
 .theme:hover{
+
     background:var(--panel2);
-    color:var(--text)
+
+    color:var(--text);
 }
 
 .login{
+
     background:
         linear-gradient(
             135deg,
@@ -595,34 +626,47 @@ header{
 
     color:#fff!important;
 
-    font-weight:800
+    font-weight:800;
 }
 
 .hamb{
+
     display:none;
 
-    border:1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
 
-    background:var(--panel);
+    background:
+        var(--panel);
 
     color:var(--text);
 
     width:43px;
     height:43px;
 
-    border-radius:14px
+    border-radius:14px;
+
+    cursor:pointer;
 }
 
 
-/* ======================================================
-   HERO
-====================================================== */
+/* =========================================================
+   MAIN
+========================================================= */
 
 main{
-    padding-top:72px
+
+    padding-top:72px;
 }
 
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
+
     min-height:
         calc(100svh - 72px);
 
@@ -631,10 +675,11 @@ main{
     align-items:center;
 
     padding:
-        60px 0 45px
+        60px 0 45px;
 }
 
 .hero-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -642,10 +687,11 @@ main{
 
     gap:60px;
 
-    align-items:center
+    align-items:center;
 }
 
 .eyebrow{
+
     display:inline-flex;
 
     gap:8px;
@@ -653,21 +699,24 @@ main{
     align-items:center;
 
     border:
-        1px solid rgba(141,99,255,.28);
+        1px solid
+        rgba(141,99,255,.28);
 
     background:
         rgba(141,99,255,.08);
 
-    padding:8px 12px;
+    padding:
+        8px 12px;
 
     border-radius:999px;
 
     color:#cfc4ff;
 
-    font-size:13px
+    font-size:13px;
 }
 
 .dot{
+
     width:7px;
     height:7px;
 
@@ -676,10 +725,12 @@ main{
     background:#7ef0c1;
 
     box-shadow:
-        0 0 15px #7ef0c1
+        0 0 15px
+        #7ef0c1;
 }
 
 .hero h1{
+
     font-size:
         clamp(42px,6vw,82px);
 
@@ -690,10 +741,11 @@ main{
     margin:
         20px 0 18px;
 
-    font-weight:950
+    font-weight:950;
 }
 
 .gradient{
+
     background:
         linear-gradient(
             90deg,
@@ -703,36 +755,41 @@ main{
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
-    color:transparent
+    color:transparent;
 }
 
 .hero p{
+
     max-width:650px;
 
     color:var(--muted);
 
     font-size:18px;
 
-    line-height:1.9
+    line-height:1.9;
 }
 
 .actions{
+
     display:flex;
 
     flex-wrap:wrap;
 
     gap:12px;
 
-    margin-top:28px
+    margin-top:28px;
 }
 
 .primary,
 .secondary{
+
     border:0;
 
-    padding:14px 20px;
+    padding:
+        14px 20px;
 
     border-radius:16px;
 
@@ -740,10 +797,12 @@ main{
 
     font-weight:800;
 
-    transition:.25s
+    transition:
+        transform .2s ease;
 }
 
 .primary{
+
     background:
         linear-gradient(
             135deg,
@@ -754,24 +813,34 @@ main{
     color:#fff;
 
     box-shadow:
-        0 15px 45px rgba(99,63,230,.25)
+        0 15px 45px
+        rgba(99,63,230,.25);
 }
 
 .secondary{
+
     background:var(--panel);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
-    color:var(--text)
+    color:var(--text);
 }
 
 .primary:hover,
 .secondary:hover{
-    transform:translateY(-4px)
+
+    transform:translateY(-4px);
 }
 
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
 .search{
+
     margin-top:28px;
 
     display:flex;
@@ -783,16 +852,20 @@ main{
     background:var(--panel);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     border-radius:19px;
 
     box-shadow:var(--shadow);
 
-    backdrop-filter:blur(18px)
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
 }
 
 .search input{
+
     flex:1;
 
     min-width:0;
@@ -805,10 +878,12 @@ main{
 
     color:var(--text);
 
-    padding:10px 14px
+    padding:
+        10px 14px;
 }
 
 .search button{
+
     border:0;
 
     background:
@@ -822,42 +897,53 @@ main{
 
     border-radius:14px;
 
-    padding:11px 17px;
+    padding:
+        11px 17px;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
+
+/* =========================================================
+   HERO ART
+========================================================= */
+
 .hero-art{
+
     position:relative;
 
     min-height:480px;
 
     display:grid;
 
-    place-items:center
+    place-items:center;
 }
 
 .halo{
+
     position:absolute;
 
     width:min(430px,82vw);
+
     height:min(430px,82vw);
 
     border-radius:50%;
 
     border:
-        1px solid rgba(141,99,255,.25);
+        1px solid
+        rgba(141,99,255,.25);
 
     box-shadow:
-        inset 0 0 80px rgba(112,76,232,.10),
-        0 0 80px rgba(79,79,255,.12);
+        0 0 70px
+        rgba(79,79,255,.10);
 
     animation:
-        spin 20s linear infinite
+        spin 22s linear infinite;
 }
 
 .halo:before,
 .halo:after{
+
     content:"";
 
     position:absolute;
@@ -865,21 +951,24 @@ main{
     border-radius:50%;
 
     border:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
     inset:30px;
 
     animation:
-        spin 14s linear reverse infinite
+        spin 15s linear reverse infinite;
 }
 
 .halo:after{
+
     inset:75px;
 
-    animation-duration:9s
+    animation-duration:10s;
 }
 
 .teacher{
+
     width:min(330px,68vw);
 
     aspect-ratio:1;
@@ -893,53 +982,61 @@ main{
     z-index:2;
 
     border:
-        7px solid rgba(255,255,255,.08);
+        7px solid
+        rgba(255,255,255,.08);
 
     box-shadow:
-        0 0 80px rgba(116,72,232,.38);
+        0 0 65px
+        rgba(116,72,232,.30);
 
     animation:
-        teacherFloat 5s ease-in-out infinite
+        teacherFloat 5s ease-in-out infinite;
 }
 
 .teacher-card{
+
     position:absolute;
 
     z-index:4;
 
     bottom:25px;
+
     right:5%;
 
     background:var(--panel);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(18px);
 
-    padding:15px 18px;
+    -webkit-backdrop-filter:blur(18px);
+
+    padding:
+        15px 18px;
 
     border-radius:20px;
 
     box-shadow:var(--shadow);
-
-    animation:
-        cardIn 1s .3s both
 }
 
 .teacher-card b{
-    display:block
+
+    display:block;
 }
 
 .teacher-card span{
+
     font-size:12px;
 
-    color:var(--muted)
+    color:var(--muted);
 }
 
 @keyframes spin{
+
     to{
-        transform:rotate(360deg)
+        transform:rotate(360deg);
     }
 }
 
@@ -947,81 +1044,80 @@ main{
 
     50%{
         transform:
-            translateY(-12px)
-            rotate(1deg)
+            translate3d(0,-10px,0)
+            rotate(1deg);
     }
-
-}
-
-@keyframes cardIn{
-
-    from{
-        opacity:0;
-        transform:translateY(20px)
-    }
-
-    to{
-        opacity:1;
-        transform:none
-    }
-
 }
 
 
-/* ======================================================
+/* =========================================================
    SECTIONS
-====================================================== */
+========================================================= */
 
 section{
+
     padding:90px 0;
 
-    scroll-margin-top:80px
+    scroll-margin-top:80px;
 }
 
 .section-head{
+
     text-align:center;
 
     max-width:720px;
 
     margin:
-        0 auto 35px
+        0 auto 35px;
 }
 
 .section-head span{
+
     color:#9e8aff;
 
     font-size:13px;
 
-    font-weight:800
+    font-weight:800;
 }
 
 .section-head h2{
+
     font-size:
         clamp(30px,5vw,52px);
 
-    margin:10px 0
+    margin:
+        10px 0;
 }
 
 .section-head p{
+
     color:var(--muted);
 
-    line-height:1.8
+    line-height:1.8;
 }
 
+
+/* =========================================================
+   CARDS
+========================================================= */
+
 .cards{
+
     display:grid;
 
     grid-template-columns:
         repeat(4,1fr);
 
-    gap:14px
+    gap:14px;
 }
 
 .card{
+
     background:var(--panel);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     padding:24px;
 
@@ -1029,43 +1125,30 @@ section{
 
     box-shadow:var(--shadow);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(16px);
 
-    transition:.3s;
+    -webkit-backdrop-filter:blur(16px);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
 
     position:relative;
 
-    overflow:hidden
-}
-
-.card:before{
-    content:"";
-
-    position:absolute;
-
-    width:120px;
-    height:120px;
-
-    border-radius:50%;
-
-    background:var(--p);
-
-    filter:blur(45px);
-
-    opacity:.08;
-
-    left:-35px;
-    bottom:-50px
+    overflow:hidden;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+
+    transform:
+        translateY(-8px);
 
     border-color:
-        rgba(141,99,255,.32)
+        rgba(141,99,255,.32);
 }
 
 .icon{
+
     width:48px;
     height:48px;
 
@@ -1074,7 +1157,7 @@ section{
     background:
         linear-gradient(
             135deg,
-            rgba(141,99,255,.2),
+            rgba(141,99,255,.20),
             rgba(49,84,223,.18)
         );
 
@@ -1084,36 +1167,47 @@ section{
 
     font-size:23px;
 
-    margin-bottom:20px
+    margin-bottom:20px;
 }
 
 .card h3{
-    margin-bottom:8px
+
+    margin-bottom:8px;
 }
 
 .card p{
+
     color:var(--muted);
 
     font-size:14px;
 
-    line-height:1.8
+    line-height:1.8;
 }
 
+
+/* =========================================================
+   PLATFORM
+========================================================= */
+
 .platform{
+
     display:grid;
 
     grid-template-columns:
         1fr 1fr;
 
-    gap:20px
+    gap:20px;
 }
 
 .feature-list{
+
     display:grid;
-    gap:12px
+
+    gap:12px;
 }
 
 .feature{
+
     display:flex;
 
     gap:14px;
@@ -1123,30 +1217,40 @@ section{
     background:var(--panel);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     border-radius:20px;
 
-    padding:18px
+    padding:18px;
 }
 
 .feature strong{
+
     display:block;
 
-    margin-bottom:5px
+    margin-bottom:5px;
 }
 
 .feature span{
+
     color:var(--muted);
 
     font-size:13px;
 
-    line-height:1.7
+    line-height:1.7;
 }
 
+
+/* =========================================================
+   CTA
+========================================================= */
+
 .cta{
+
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:
         linear-gradient(
@@ -1163,23 +1267,31 @@ section{
 
     overflow:hidden;
 
-    position:relative
+    position:relative;
 }
 
 .cta h2{
+
     font-size:
         clamp(28px,5vw,48px);
 
-    margin-bottom:12px
+    margin-bottom:12px;
 }
 
 .cta p{
+
     color:var(--muted);
 
-    margin-bottom:22px
+    margin-bottom:22px;
 }
 
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer{
+
     padding:
         35px 0 100px;
 
@@ -1187,15 +1299,16 @@ section{
 
     text-align:center;
 
-    font-size:13px
+    font-size:13px;
 }
 
 
-/* ======================================================
+/* =========================================================
    SHEET
-====================================================== */
+========================================================= */
 
 .sheet{
+
     position:fixed;
 
     inset:0;
@@ -1205,7 +1318,9 @@ section{
     background:
         rgba(0,0,0,.58);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
 
     display:flex;
 
@@ -1215,15 +1330,20 @@ section{
 
     visibility:hidden;
 
-    transition:.35s
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
 }
 
 .sheet.open{
+
     opacity:1;
-    visibility:visible
+
+    visibility:visible;
 }
 
 .sheet-panel{
+
     width:100%;
 
     max-height:82svh;
@@ -1231,7 +1351,8 @@ section{
     background:var(--bg);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     border-bottom:0;
 
@@ -1243,17 +1364,21 @@ section{
     transform:translateY(100%);
 
     transition:
-        .45s cubic-bezier(.2,.9,.2,1);
+        transform .35s
+        cubic-bezier(.2,.9,.2,1);
 
     box-shadow:
-        0 -30px 100px rgba(0,0,0,.45)
+        0 -30px 100px
+        rgba(0,0,0,.45);
 }
 
 .sheet.open .sheet-panel{
-    transform:none
+
+    transform:translateY(0);
 }
 
 .grab{
+
     width:48px;
     height:5px;
 
@@ -1262,20 +1387,23 @@ section{
     border-radius:99px;
 
     margin:
-        0 auto 18px
+        0 auto 18px;
 }
 
 .sheet-top{
+
     display:flex;
 
     justify-content:space-between;
 
-    align-items:center
+    align-items:center;
 }
 
 .close{
+
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:var(--panel);
 
@@ -1286,10 +1414,11 @@ section{
 
     border-radius:13px;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 .sheet-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -1297,12 +1426,14 @@ section{
 
     gap:12px;
 
-    margin-top:18px
+    margin-top:18px;
 }
 
 .sheet-item{
+
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:var(--panel);
 
@@ -1314,34 +1445,40 @@ section{
 
     cursor:pointer;
 
-    transition:.25s
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
 }
 
 .sheet-item:hover{
+
     transform:translateY(-5px);
 
     border-color:
-        rgba(141,99,255,.4)
+        rgba(141,99,255,.4);
 }
 
 .sheet-item b{
+
     display:block;
 
-    margin-top:9px
+    margin-top:9px;
 }
 
 .sheet-item span{
+
     font-size:11px;
 
-    color:var(--muted)
+    color:var(--muted);
 }
 
 
-/* ======================================================
+/* =========================================================
    BOTTOM NAV
-====================================================== */
+========================================================= */
 
 .bottom{
+
     display:none;
 
     position:fixed;
@@ -1351,15 +1488,19 @@ section{
     bottom:10px;
 
     left:10px;
+
     right:10px;
 
     background:
-        rgba(12,12,20,.84);
+        rgba(12,12,20,.90);
 
     border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
-    backdrop-filter:blur(22px);
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
 
     border-radius:23px;
 
@@ -1369,10 +1510,12 @@ section{
         repeat(5,1fr);
 
     box-shadow:
-        0 15px 55px rgba(0,0,0,.4)
+        0 15px 55px
+        rgba(0,0,0,.4);
 }
 
 .bottom button{
+
     border:0;
 
     background:transparent;
@@ -1385,26 +1528,28 @@ section{
 
     font-size:10px;
 
-    cursor:pointer
+    cursor:pointer;
 }
 
 .bottom button span{
+
     display:block;
 
     font-size:18px;
 
-    margin-bottom:3px
+    margin-bottom:3px;
 }
 
-.bottom button.active,
 .bottom button:hover{
+
     background:
         rgba(141,99,255,.14);
 
-    color:#fff
+    color:#fff;
 }
 
 .bottom .main{
+
     margin-top:-27px;
 
     width:58px;
@@ -1422,359 +1567,323 @@ section{
     color:#fff;
 
     border:
-        5px solid var(--bg);
+        5px solid
+        var(--bg);
 
     box-shadow:
-        0 10px 35px rgba(105,68,232,.4)
+        0 10px 35px
+        rgba(105,68,232,.4);
 }
 
 
-/* ======================================================
-   MOTION
-====================================================== */
+/* =========================================================
+   REVEAL
+========================================================= */
 
 .reveal{
+
     opacity:0;
 
     transform:
-        translateY(28px)
-        scale(.98);
+        translate3d(0,20px,0);
 
     transition:
-        opacity .8s,
-        transform .8s
+        opacity .55s ease,
+        transform .55s ease;
 }
 
 .reveal.show{
+
     opacity:1;
 
-    transform:none
+    transform:
+        translate3d(0,0,0);
 }
 
 
-/* ======================================================
+/* =========================================================
    TABLET
-====================================================== */
+========================================================= */
 
 @media(max-width:900px){
 
     .hero-grid,
     .platform{
-        grid-template-columns:1fr
+
+        grid-template-columns:1fr;
     }
 
     .hero{
-        text-align:center
+
+        text-align:center;
     }
 
     .hero p,
     .search{
+
         margin-left:auto;
-        margin-right:auto
+        margin-right:auto;
     }
 
     .actions{
-        justify-content:center
+
+        justify-content:center;
     }
 
     .hero-art{
-        min-height:390px
+
+        min-height:390px;
     }
 
     .cards{
+
         grid-template-columns:
-            repeat(2,1fr)
+            repeat(2,1fr);
     }
 
     .nav-links{
-        display:none
+
+        display:none;
     }
 
     .hamb{
-        display:block
+
+        display:block;
     }
 
     .sheet-grid{
-        grid-template-columns:
-            repeat(3,1fr)
-    }
 
+        grid-template-columns:
+            repeat(3,1fr);
+    }
 }
 
 
-/* ======================================================
+/* =========================================================
    MOBILE
-====================================================== */
+========================================================= */
 
-@media(max-width:700px){
-
-    #intro{
-        background:
-            radial-gradient(
-                circle at 50% 42%,
-                #17112d 0%,
-                #050507 38%,
-                #000 78%
-            )
-    }
-
-    #intro:before,
-    #intro:after{
-        content:"";
-
-        position:absolute;
-
-        inset:-30%;
-
-        border:
-            1px solid rgba(145,105,255,.10);
-
-        border-radius:50%;
-
-        animation:
-            mobileOrbit 9s linear infinite;
-
-        transform:rotate(18deg)
-    }
-
-    #intro:after{
-        inset:-45%;
-
-        animation-duration:14s;
-
-        animation-direction:reverse;
-
-        border-color:
-            rgba(49,84,223,.08)
-    }
-
-    .intro-glow{
-        width:330px;
-        height:330px;
-
-        filter:blur(35px);
-
-        background:
-            radial-gradient(
-                circle,
-                rgba(125,78,255,.38),
-                rgba(49,84,223,.08) 42%,
-                transparent 70%
-            );
-
-        animation:
-            mobileGlow 4s ease-in-out infinite
-    }
-
-    .intro-box{
-        padding:22px 18px;
-
-        width:100%
-    }
-
-    .intro-logo{
-        width:154px;
-        height:154px;
-
-        border-radius:44px;
-
-        box-shadow:
-            0 0 35px rgba(117,76,255,.45),
-            0 0 100px rgba(117,76,255,.20),
-            inset 0 0 0 1px rgba(255,255,255,.12)
-    }
-
-    .intro-title{
-        font-size:44px;
-
-        margin-top:24px;
-
-        text-shadow:
-            0 0 25px rgba(141,99,255,.35)
-    }
-
-    .intro-sub{
-        font-size:14px;
-
-        margin:
-            8px 0 18px
-    }
-
-    .intro-praise{
-        font-size:13px;
-
-        line-height:1.9;
-
-        margin-bottom:22px
-    }
-
-    .voice-btn{
-        width:min(92vw,340px);
-
-        padding:16px 20px;
-
-        border-radius:20px;
-
-        font-size:15px
-    }
-
-    .voice-btn:active{
-        transform:scale(.96)
-    }
-
-    @keyframes mobileOrbit{
-
-        to{
-            transform:rotate(378deg)
-        }
-
-    }
-
-    @keyframes mobileGlow{
-
-        50%{
-            transform:scale(1.16);
-
-            opacity:.75
-        }
-
-    }
-
+@media(max-width:620px){
 
     header{
-        height:64px
+
+        height:64px;
     }
 
     .nav{
-        height:64px
+
+        height:64px;
     }
 
     .brand-mark{
+
         width:38px;
-        height:38px
+        height:38px;
     }
 
     .brand{
-        font-size:14px
+
+        font-size:14px;
     }
 
     main{
-        padding-top:64px
+
+        padding-top:64px;
     }
 
     .hero{
+
         min-height:auto;
 
         padding:
-            55px 0 25px
+            55px 0 25px;
     }
 
     .hero h1{
+
         font-size:46px;
 
-        letter-spacing:-2.5px
+        letter-spacing:-2.5px;
     }
 
     .hero p{
-        font-size:15px
+
+        font-size:15px;
     }
 
     .search{
-        margin-top:22px
+
+        margin-top:22px;
     }
 
     .hero-art{
-        min-height:330px
+
+        min-height:330px;
     }
 
     .teacher{
-        width:235px
+
+        width:235px;
     }
 
     .teacher-card{
+
         bottom:0;
-        right:0
+
+        right:0;
     }
 
     .cards{
+
         grid-template-columns:
-            1fr 1fr
+            1fr 1fr;
     }
 
     .card{
+
         padding:18px;
 
-        border-radius:19px
+        border-radius:19px;
     }
 
     .card h3{
-        font-size:15px
+
+        font-size:15px;
     }
 
     .card p{
-        font-size:12px
+
+        font-size:12px;
     }
 
     .bottom{
-        display:grid
+
+        display:grid;
     }
 
     .footer{
-        padding-bottom:105px
+
+        padding-bottom:105px;
     }
 
     .sheet-grid{
+
         grid-template-columns:
-            repeat(2,1fr)
+            repeat(2,1fr);
     }
 
     .sheet-panel{
-        padding:18px
+
+        padding:18px;
     }
 
     .cta{
-        padding:30px 18px
+
+        padding:30px 18px;
     }
 
     section{
-        padding:65px 0
+
+        padding:65px 0;
     }
 
-}
-
-
-/* ======================================================
-   LOW POWER MOBILE
-====================================================== */
-
-@media(max-width:700px){
-
-    body{
-        background-image:
-            radial-gradient(
-                circle at 50% 0,
-                rgba(116,72,232,.16),
-                transparent 38%
-            )
-    }
+    /* تخفيف المؤثرات للموبايل */
 
     .bg-grid{
-        opacity:.08;
 
-        background-size:70px 70px
+        opacity:.07;
+
+        background-size:70px 70px;
     }
 
     .orb{
+
+        opacity:.08;
+
         filter:blur(5px);
 
-        opacity:.14;
-
-        animation-duration:18s
+        animation-duration:20s;
     }
 
     .o2,
     .o3{
-        display:none
+
+        display:none;
+    }
+
+    .halo{
+
+        animation-duration:35s;
+
+        box-shadow:
+            0 0 35px
+            rgba(79,79,255,.08);
+    }
+
+    .halo:before,
+    .halo:after{
+
+        display:none;
+    }
+
+    .teacher{
+
+        animation-duration:8s;
+
+        box-shadow:
+            0 0 45px
+            rgba(116,72,232,.22);
+    }
+
+}
+
+
+/* =========================================================
+   VERY LOW POWER
+========================================================= */
+
+@media(max-width:480px){
+
+    .intro-glow{
+
+        width:300px;
+        height:300px;
+
+        filter:blur(15px);
+
+        animation:none;
+
+        opacity:.75;
+    }
+
+    .intro-logo{
+
+        width:145px;
+        height:145px;
+
+        animation:
+            logoIn .6s ease-out;
+    }
+
+    .intro-title{
+
+        text-shadow:none;
+    }
+
+    .bg-grid,
+    .orb{
+
+        display:none;
+    }
+
+    .halo{
+
+        animation:none;
+    }
+
+    .teacher{
+
+        animation:none;
     }
 
     header,
@@ -1784,39 +1893,17 @@ section{
     .teacher-card,
     .bottom,
     .sheet-panel{
+
         backdrop-filter:none;
-        -webkit-backdrop-filter:none
+
+        -webkit-backdrop-filter:none;
     }
-
-    .card:before{
-        filter:blur(25px)
-    }
-
-    .halo:before,
-    .halo:after{
-        display:none
-    }
-
-    .halo{
-        animation-duration:35s;
-
-        box-shadow:
-            0 0 35px rgba(79,79,255,.10)
-    }
-
-    .teacher{
-        box-shadow:
-            0 0 45px rgba(116,72,232,.25);
-
-        animation-duration:8s
-    }
-
 }
 
 
-/* ======================================================
+/* =========================================================
    REDUCED MOTION
-====================================================== */
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1830,74 +1917,15 @@ section{
 
         transition-duration:.01ms!important;
 
-        scroll-behavior:auto!important
+        scroll-behavior:auto!important;
     }
 
-}
+    .reveal{
 
-.low-power .bg-grid,
-.low-power .orb{
-    display:none
-}
+        opacity:1;
 
-.low-power .halo{
-    animation:none;
-
-    box-shadow:
-        0 0 28px rgba(79,79,255,.08)
-}
-
-.low-power .teacher{
-    animation:none;
-
-    box-shadow:
-        0 0 35px rgba(116,72,232,.20)
-}
-
-.low-power .intro-glow{
-    animation:none;
-
-    filter:blur(12px)
-}
-
-.low-power #intro:before,
-.low-power #intro:after{
-    display:none
-}
-
-.low-power .card,
-.low-power .feature{
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.18)
-}
-
-
-/* ======================================================
-   LANDSCAPE MOBILE
-====================================================== */
-
-@media(orientation:landscape) and (max-height:560px){
-
-    .hero{
-        padding:30px 0
+        transform:none;
     }
-
-    .hero-grid{
-        grid-template-columns:1fr 1fr
-    }
-
-    .hero-art{
-        min-height:280px
-    }
-
-    .teacher{
-        width:220px
-    }
-
-    .bottom{
-        display:none
-    }
-
 }
 
 </style>
@@ -1908,9 +1936,9 @@ section{
 <body>
 
 
-<!-- ======================================================
+<!-- =======================================================
      INTRO
-====================================================== -->
+======================================================== -->
 
 <div
     id="intro"
@@ -1925,6 +1953,7 @@ section{
             class="intro-logo"
             src="assets/teacher.png"
             alt="الخوارزمي"
+            decoding="async"
         >
 
         <div class="intro-title">
@@ -1933,22 +1962,10 @@ section{
 
         <div class="intro-sub">
             منصة الرياضيات الذكية
-        </div>
-
-        <div class="intro-praise">
-
-            <strong>الخوارزمي</strong>
-            مش مجرد منصة تعليمية،
-            دي مساحة تخليك تفهم الرياضيات،
-            تتحدى نفسك،
-            وتطور مستواك خطوة بخطوة.
             <br>
-
             <strong>
-                هنا كل سؤال بداية لفكرة،
-                وكل إجابة خطوة أقرب للنجاح.
+                هنا تبدأ رحلة التفوق، وهنا تصبح الرياضيات أسهل وأجمل.
             </strong>
-
         </div>
 
         <button
@@ -1956,19 +1973,23 @@ section{
             id="startBtn"
             type="button"
         >
-
-            <span id="voiceIcon">🔊</span>
-
-            <span id="voiceText">
-                ابدأ بصوت الخوارزمي
-            </span>
-
+            <span>🔊</span>
+            ابدأ مع الخوارزمي
         </button>
+
+        <div class="intro-note">
+            ✨ الخوارزمي... حيث تتحول المذاكرة إلى إنجاز،
+            والخطوات الصغيرة تصنع نجاحًا كبيرًا.
+        </div>
 
     </div>
 
 </div>
 
+
+<!-- =======================================================
+     BACKGROUND
+======================================================= -->
 
 <div class="bg-grid"></div>
 
@@ -1977,9 +1998,9 @@ section{
 <div class="orb o3"></div>
 
 
-<!-- ======================================================
+<!-- =======================================================
      HEADER
-====================================================== -->
+======================================================= -->
 
 <header>
 
@@ -2055,8 +2076,9 @@ section{
 
         <button
             class="hamb"
-            onclick="openSheet()"
             type="button"
+            onclick="openSheet()"
+            aria-label="القائمة"
         >
             ☰
         </button>
@@ -2066,12 +2088,16 @@ section{
 </header>
 
 
-<!-- ======================================================
+<!-- =======================================================
      MAIN
-====================================================== -->
+======================================================= -->
 
 <main id="home">
 
+
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section class="hero">
 
@@ -2104,10 +2130,9 @@ section{
 
             <p>
 
-                منصة رياضيات متكاملة تجمع
-                الاختبارات، الفيديوهات، ملفات PDF،
-                المراجعة، والمساعد الذكي
-                في تجربة واحدة سريعة وفخمة.
+                منصة رياضيات متكاملة تجمع الاختبارات،
+                الفيديوهات، ملفات PDF، المراجعة،
+                والمساعد الذكي في تجربة واحدة سريعة وفخمة.
 
             </p>
 
@@ -2117,11 +2142,12 @@ section{
                 <input
                     id="searchInput"
                     placeholder="ابحث عن درس، فيديو، اختبار أو موضوع رياضيات..."
+                    autocomplete="off"
                 >
 
                 <button
-                    onclick="searchNow()"
                     type="button"
+                    onclick="searchNow()"
                 >
                     بحث
                 </button>
@@ -2157,7 +2183,8 @@ section{
             <img
                 class="teacher"
                 src="assets/teacher.png"
-                alt="مدرس الخوارزمي"
+                alt="الأستاذ أمير طلعت"
+                decoding="async"
             >
 
             <div class="teacher-card">
@@ -2174,15 +2201,14 @@ section{
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      WHAT
-====================================================== -->
+======================================================= -->
 
 <section id="what">
 
@@ -2200,8 +2226,8 @@ section{
 
             <p>
                 مش مجرد اختبارات؛
-                الخوارزمي مساحة كاملة
-                للمذاكرة والتدريب والمتابعة.
+                الخوارزمي مساحة كاملة للمذاكرة
+                والتدريب والمتابعة.
             </p>
 
         </div>
@@ -2239,8 +2265,8 @@ section{
                 </h3>
 
                 <p>
-                    محتوى فيديو مرتب حسب
-                    المرحلة والموضوع لتراجع في أي وقت.
+                    محتوى فيديو مرتب حسب المرحلة
+                    والموضوع لتراجع في أي وقت.
                 </p>
 
             </article>
@@ -2275,8 +2301,7 @@ section{
                 </h3>
 
                 <p>
-                    اسأل المساعد الذكي
-                    عن السؤال أو الفيديو
+                    اسأل المساعد الذكي عن السؤال
                     وخد شرحًا مناسبًا.
                 </p>
 
@@ -2290,9 +2315,9 @@ section{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      PLATFORM
-====================================================== -->
+======================================================= -->
 
 <section id="platform">
 
@@ -2330,9 +2355,8 @@ section{
                         </strong>
 
                         <span>
-                            اختار مرحلتك وابدأ من
-                            المحتوى المناسب لك بدل
-                            ما تتوه بين الصفحات.
+                            اختار مرحلتك وابدأ من المحتوى
+                            المناسب لك بدل ما تتوه بين الصفحات.
                         </span>
 
                     </div>
@@ -2354,8 +2378,7 @@ section{
 
                         <span>
                             نتائج الاختبارات تساعدك تعرف
-                            نقاط القوة والحاجات اللي
-                            محتاجة مراجعة.
+                            نقاط القوة والحاجات اللي محتاجة مراجعة.
                         </span>
 
                     </div>
@@ -2376,9 +2399,8 @@ section{
                         </strong>
 
                         <span>
-                            تقدر تسأل عن الفيديو أو
-                            المادة نفسها وتكمل مذاكرتك
-                            بدون ما تخرج من الصفحة.
+                            تقدر تسأل عن المادة وتكمل
+                            مذاكرتك بدون ما تخرج من الصفحة.
                         </span>
 
                     </div>
@@ -2396,8 +2418,8 @@ section{
                 </h2>
 
                 <p>
-                    ادخل حسابك واستكشف
-                    الاختبارات والمحتوى المتاح لك.
+                    ادخل حسابك واستكشف الاختبارات
+                    والمحتوى المتاح لك.
                 </p>
 
                 <a
@@ -2417,9 +2439,9 @@ section{
 </section>
 
 
-<!-- ======================================================
+<!-- =======================================================
      EXTRAS
-====================================================== -->
+======================================================= -->
 
 <section id="extras">
 
@@ -2438,7 +2460,7 @@ section{
             <p>
                 الوصول السريع للـAI،
                 الفيديوهات، الملفات،
-                والاختبارات من شريط الخصائص.
+                والاختبارات.
             </p>
 
         </div>
@@ -2458,8 +2480,8 @@ section{
                 </h3>
 
                 <p>
-                    ترحيب صوتي عند فتح
-                    المنصة باستخدام صوت الجهاز المتاح.
+                    ترحيب صوتي مميز عند دخولك
+                    للمنصة باستخدام صوت الجهاز.
                 </p>
 
             </article>
@@ -2476,8 +2498,8 @@ section{
                 </h3>
 
                 <p>
-                    غيّر مظهر المنصة
-                    واحفظ اختيارك على جهازك.
+                    غيّر مظهر المنصة واحفظ اختيارك
+                    على جهازك.
                 </p>
 
             </article>
@@ -2494,8 +2516,8 @@ section{
                 </h3>
 
                 <p>
-                    مصمم للموبايل والتابلت
-                    والكمبيوتر بالطولي والعرضي.
+                    مصمم للموبايل والتابلت والكمبيوتر
+                    بالطولي والعرضي.
                 </p>
 
             </article>
@@ -2512,8 +2534,8 @@ section{
                 </h3>
 
                 <p>
-                    انتقالات ناعمة وظهور تدريجي
-                    وحركات تفاعلية بدون مبالغة.
+                    انتقالات ناعمة وحركات تفاعلية
+                    بدون تحميل زائد على الجهاز.
                 </p>
 
             </article>
@@ -2525,6 +2547,10 @@ section{
 
 </section>
 
+
+<!-- =======================================================
+     FINAL CTA
+======================================================= -->
 
 <section>
 
@@ -2558,9 +2584,9 @@ section{
 </main>
 
 
-<!-- ======================================================
+<!-- =======================================================
      FOOTER
-====================================================== -->
+======================================================= -->
 
 <footer class="footer">
 
@@ -2569,9 +2595,9 @@ section{
 </footer>
 
 
-<!-- ======================================================
+<!-- =======================================================
      BOTTOM NAV
-====================================================== -->
+======================================================= -->
 
 <div class="bottom">
 
@@ -2579,11 +2605,8 @@ section{
         onclick="location.href='#home'"
         type="button"
     >
-
         <span>⌂</span>
-
         الرئيسية
-
     </button>
 
 
@@ -2591,11 +2614,8 @@ section{
         onclick="location.href='#what'"
         type="button"
     >
-
         <span>📚</span>
-
         المحتوى
-
     </button>
 
 
@@ -2604,11 +2624,8 @@ section{
         onclick="openSheet()"
         type="button"
     >
-
         <span>✦</span>
-
         الخصائص
-
     </button>
 
 
@@ -2616,11 +2633,8 @@ section{
         onclick="location.href='#extras'"
         type="button"
     >
-
         <span>✨</span>
-
         الإضافات
-
     </button>
 
 
@@ -2628,19 +2642,16 @@ section{
         onclick="location.href='auth.html'"
         type="button"
     >
-
         <span>↪</span>
-
         دخول
-
     </button>
 
 </div>
 
 
-<!-- ======================================================
+<!-- =======================================================
      SHEET
-====================================================== -->
+======================================================= -->
 
 <div
     class="sheet"
@@ -2663,9 +2674,9 @@ section{
 
                 <div
                     style="
-                        color:var(--muted);
-                        font-size:12px;
-                        margin-top:4px
+                    color:var(--muted);
+                    font-size:12px;
+                    margin-top:4px
                     "
                 >
                     كل الأدوات في مكان واحد
@@ -2710,11 +2721,7 @@ section{
 
             <div
                 class="sheet-item"
-                onclick="
-                    alert(
-                        'قسم الفيديوهات جاهز للربط مع محتوى Supabase من لوحة التحكم.'
-                    )
-                "
+                onclick="alert('قسم الفيديوهات جاهز للربط مع محتوى Supabase من لوحة التحكم.')"
             >
 
                 <span style="font-size:25px">
@@ -2734,11 +2741,7 @@ section{
 
             <div
                 class="sheet-item"
-                onclick="
-                    alert(
-                        'قسم ملفات PDF جاهز للربط مع ملفات المنصة.'
-                    )
-                "
+                onclick="alert('قسم ملفات PDF جاهز للربط مع ملفات المنصة.')"
             >
 
                 <span style="font-size:25px">
@@ -2863,20 +2866,18 @@ section{
 </div>
 
 
-<!-- ======================================================
+<!-- =======================================================
      JAVASCRIPT
-====================================================== -->
+======================================================= -->
 
 <script>
-
-(function(){
 
 "use strict";
 
 
-/* ======================================================
+/* =========================================================
    ELEMENTS
-====================================================== */
+========================================================= */
 
 const root =
     document.documentElement;
@@ -2890,348 +2891,184 @@ const intro =
 const startBtn =
     document.getElementById("startBtn");
 
-const voiceIcon =
-    document.getElementById("voiceIcon");
+const searchInput =
+    document.getElementById("searchInput");
 
-const voiceText =
-    document.getElementById("voiceText");
+const themeBtn =
+    document.getElementById("themeBtn");
 
 
-/* ======================================================
+/* =========================================================
    DEVICE
-====================================================== */
+========================================================= */
 
 const isMobile =
-    matchMedia("(max-width:700px)").matches;
+    window.matchMedia(
+        "(max-width:700px)"
+    ).matches;
 
-const reduced =
-    matchMedia(
+const reducedMotion =
+    window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
 
-const lowPower =
-    isMobile &&
-    (
-        (
-            navigator.hardwareConcurrency &&
-            navigator.hardwareConcurrency <= 4
-        )
-        ||
-        (
-            navigator.deviceMemory &&
-            navigator.deviceMemory <= 4
-        )
-    );
 
-
-if(reduced || lowPower){
-
-    root.classList.add("low-power");
-
-}
-
-
-/* ======================================================
-   LOCK SCROLL WHILE INTRO IS OPEN
-====================================================== */
+/* =========================================================
+   LOCK BODY DURING INTRO
+========================================================= */
 
 body.style.overflow = "hidden";
 
 
-/* ======================================================
+/* =========================================================
    WELCOME AUDIO
-====================================================== */
+========================================================= */
 
-/*
-   مهم:
-   تأكد أن الملف موجود هنا:
+let welcomeAudio = null;
 
-   assets/audio/alkhwarizmi-welcome.wav
-*/
+try{
 
-const welcomeAudio =
-    new Audio(
-        "assets/audio/alkhwarizmi-welcome.wav"
-    );
-
-welcomeAudio.preload = "auto";
-
-welcomeAudio.setAttribute(
-    "playsinline",
-    ""
-);
-
-welcomeAudio.setAttribute(
-    "webkit-playsinline",
-    ""
-);
-
-welcomeAudio.volume = 1;
-
-let started = false;
-
-
-/* ======================================================
-   AUDIO EVENTS
-====================================================== */
-
-welcomeAudio.addEventListener(
-    "canplaythrough",
-    function(){
-
-        startBtn.classList.remove("loading");
-
-    }
-);
-
-
-welcomeAudio.addEventListener(
-    "ended",
-    function(){
-
-        finishIntro();
-
-    }
-);
-
-
-welcomeAudio.addEventListener(
-    "error",
-    function(){
-
-        console.error(
-            "تعذر تشغيل ملف صوت الخوارزمي:",
-            welcomeAudio.error
+    welcomeAudio =
+        new Audio(
+            "assets/audio/alkhwarizmi-welcome.wav"
         );
 
-        startBtn.classList.remove("loading");
+    welcomeAudio.preload = "auto";
 
-        startBtn.classList.add("error");
-
-        voiceIcon.textContent = "⚠️";
-
-        voiceText.textContent =
-            "تعذر تشغيل الصوت";
-
-        /*
-           نكمل فتح المنصة حتى لو الصوت غير موجود
-        */
-
-        setTimeout(
-            finishIntro,
-            900
-        );
-
-    }
-);
-
-
-/* ======================================================
-   FINISH INTRO
-====================================================== */
-
-function finishIntro(){
-
-    intro.classList.add(
-        "intro-hide"
+    welcomeAudio.setAttribute(
+        "playsinline",
+        ""
     );
 
-    body.style.overflow = "auto";
+}catch(error){
+
+    welcomeAudio = null;
 
 }
 
 
-/* ======================================================
-   START BUTTON
-====================================================== */
+/* =========================================================
+   START INTRO
+========================================================= */
 
-startBtn.addEventListener(
-    "click",
-    async function(){
+let introStarted = false;
 
-        if(started){
-            return;
-        }
+function startExperience(){
 
-        started = true;
+    if(introStarted){
 
-        startBtn.classList.add(
-            "loading"
-        );
+        return;
+    }
 
-        voiceIcon.textContent = "⏳";
+    introStarted = true;
 
-        voiceText.textContent =
-            "جاري تشغيل صوت الخوارزمي...";
 
+    /* -----------------------------------------------------
+       شغل الصوت بدون ما نستناه
+    ----------------------------------------------------- */
+
+    if(welcomeAudio){
 
         try{
 
-            /*
-              نعيد الصوت للبداية
-            */
-
             welcomeAudio.currentTime = 0;
 
+            const playPromise =
+                welcomeAudio.play();
 
-            /*
-              تشغيل مباشر بعد ضغطة المستخدم
-            */
+            if(playPromise){
 
-            await welcomeAudio.play();
-
-
-            /*
-              الصوت اشتغل بالفعل
-            */
-
-            startBtn.classList.remove(
-                "loading"
-            );
-
-            startBtn.classList.add(
-                "success"
-            );
-
-            voiceIcon.textContent = "✓";
-
-            voiceText.textContent =
-                "أهلًا بك في الخوارزمي";
-
-
-            /*
-              لا نخفي المقدمة فورًا،
-              نترك صوت الترحيب يشتغل.
-            */
-
-            if(
-                !isFinite(
-                    welcomeAudio.duration
-                )
-            ){
-
-                setTimeout(
-                    finishIntro,
-                    2500
+                playPromise.catch(
+                    function(){
+                        /* الصوت مرفوض من الجهاز،
+                           والمنصة ستكمل طبيعي */
+                    }
                 );
 
             }
-
 
         }catch(error){
 
-            console.error(
-                "Audio play error:",
-                error
-            );
-
-
-            /*
-              محاولة ثانية
-              بعد التفاعل المباشر
-            */
-
-            try{
-
-                welcomeAudio.load();
-
-                await welcomeAudio.play();
-
-
-                startBtn.classList.remove(
-                    "loading"
-                );
-
-                startBtn.classList.add(
-                    "success"
-                );
-
-                voiceIcon.textContent = "✓";
-
-                voiceText.textContent =
-                    "أهلًا بك في الخوارزمي";
-
-
-            }catch(secondError){
-
-                console.error(
-                    "Second audio error:",
-                    secondError
-                );
-
-
-                startBtn.classList.remove(
-                    "loading"
-                );
-
-                startBtn.classList.add(
-                    "error"
-                );
-
-                voiceIcon.textContent =
-                    "⚠️";
-
-                voiceText.textContent =
-                    "تعذر تشغيل الصوت";
-
-
-                /*
-                  لو الملف مش موجود أو
-                  المتصفح رفض الصيغة،
-                  لا نخلي المستخدم محبوس
-                  في شاشة البداية.
-                */
-
-                setTimeout(
-                    finishIntro,
-                    1000
-                );
-
-            }
+            /* لا توقف المنصة بسبب الصوت */
 
         }
 
-    },
+    }
+
+
+    /* -----------------------------------------------------
+       غير الزر
+    ----------------------------------------------------- */
+
+    startBtn.innerHTML =
+        "<span>✓</span> أهلاً بك في الخوارزمي";
+
+
+    startBtn.style.pointerEvents =
+        "none";
+
+
+    /* -----------------------------------------------------
+       افتح المنصة فورًا
+       لا تنتظر الأغنية
+    ----------------------------------------------------- */
+
+    requestAnimationFrame(
+        function(){
+
+            intro.classList.add(
+                "intro-hide"
+            );
+
+            body.style.overflow =
+                "auto";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   START BUTTON
+========================================================= */
+
+startBtn.addEventListener(
+    "click",
+    startExperience,
     {
-        passive:false
+        passive:true
     }
 );
 
 
-/* ======================================================
+/* =========================================================
    THEME
-====================================================== */
+========================================================= */
 
-const saved =
+const savedTheme =
     localStorage.getItem(
         "alk-theme"
     );
 
-if(saved === "light"){
+if(savedTheme === "light"){
 
-    root.classList.add(
-        "light"
-    );
+    root.classList.add("light");
 
 }
 
 
 function syncTheme(){
 
-    const b =
-        document.getElementById(
-            "themeBtn"
-        );
+    if(!themeBtn){
 
-    if(b){
-
-        b.textContent =
-            root.classList.contains("light")
-                ? "☀"
-                : "☾";
-
+        return;
     }
 
+    themeBtn.textContent =
+        root.classList.contains("light")
+            ? "☀"
+            : "☾";
 }
 
 
@@ -3243,55 +3080,57 @@ function toggleTheme(){
 
     localStorage.setItem(
         "alk-theme",
-
         root.classList.contains("light")
             ? "light"
             : "dark"
     );
 
     syncTheme();
-
 }
 
 
 window.toggleTheme =
     toggleTheme;
 
-
-document.getElementById(
-    "themeBtn"
-).onclick =
+themeBtn.onclick =
     toggleTheme;
-
 
 syncTheme();
 
 
-/* ======================================================
+/* =========================================================
    SHEET
-====================================================== */
+========================================================= */
 
 function openSheet(){
 
-    document
-        .getElementById("sheet")
-        .classList.add("open");
+    const sheet =
+        document.getElementById(
+            "sheet"
+        );
+
+    sheet.classList.add(
+        "open"
+    );
 
     body.style.overflow =
         "hidden";
-
 }
 
 
 function closeSheet(){
 
-    document
-        .getElementById("sheet")
-        .classList.remove("open");
+    const sheet =
+        document.getElementById(
+            "sheet"
+        );
+
+    sheet.classList.remove(
+        "open"
+    );
 
     body.style.overflow =
         "auto";
-
 }
 
 
@@ -3302,38 +3141,25 @@ window.closeSheet =
     closeSheet;
 
 
-/* ======================================================
+/* =========================================================
    SEARCH
-====================================================== */
+========================================================= */
 
 function searchNow(){
 
     const q =
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .value
-            .trim();
-
+        searchInput.value.trim();
 
     if(!q){
 
-        document
-            .getElementById(
-                "searchInput"
-            )
-            .focus();
+        searchInput.focus();
 
         return;
-
     }
-
 
     location.href =
         "tests.html?search=" +
         encodeURIComponent(q);
-
 }
 
 
@@ -3341,80 +3167,109 @@ window.searchNow =
     searchNow;
 
 
-document
-    .getElementById("searchInput")
-    .addEventListener(
-        "keydown",
-        function(e){
+searchInput.addEventListener(
+    "keydown",
+    function(event){
 
-            if(e.key === "Enter"){
+        if(event.key === "Enter"){
 
-                searchNow();
-
-            }
+            searchNow();
 
         }
-    );
+
+    },
+    {
+        passive:true
+    }
+);
 
 
-/* ======================================================
-   REVEAL ANIMATION
-====================================================== */
+/* =========================================================
+   ESC
+========================================================= */
 
-if(!reduced){
+window.addEventListener(
+    "keydown",
+    function(event){
 
-    const io =
+        if(event.key === "Escape"){
+
+            closeSheet();
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+if(
+    !reducedMotion &&
+    "IntersectionObserver" in window
+){
+
+    const observer =
         new IntersectionObserver(
             function(entries){
 
-                for(
-                    const e of entries
-                ){
+                entries.forEach(
+                    function(entry){
 
-                    if(
-                        e.isIntersecting
-                    ){
+                        if(
+                            entry.isIntersecting
+                        ){
 
-                        e.target
-                            .classList
-                            .add("show");
+                            entry.target.classList.add(
+                                "show"
+                            );
 
-                        io.unobserve(
-                            e.target
-                        );
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
 
                     }
-
-                }
+                );
 
             },
             {
                 threshold:.08,
 
                 rootMargin:
-                    "0px 0px -40px"
+                    "0px 0px -30px"
             }
         );
 
 
     document
-        .querySelectorAll(".reveal")
+        .querySelectorAll(
+            ".reveal"
+        )
         .forEach(
-            function(el,i){
+            function(element,index){
 
-                if(!lowPower){
+                if(!isMobile){
 
-                    el.style.transitionDelay =
+                    element.style.transitionDelay =
                         (
                             Math.min(
-                                i % 4,
+                                index % 4,
                                 3
-                            ) * 55
+                            ) * 45
                         ) + "ms";
 
                 }
 
-                io.observe(el);
+                observer.observe(
+                    element
+                );
 
             }
         );
@@ -3422,11 +3277,13 @@ if(!reduced){
 }else{
 
     document
-        .querySelectorAll(".reveal")
+        .querySelectorAll(
+            ".reveal"
+        )
         .forEach(
-            function(el){
+            function(element){
 
-                el.classList.add(
+                element.classList.add(
                     "show"
                 );
 
@@ -3436,28 +3293,26 @@ if(!reduced){
 }
 
 
-/* ======================================================
-   ESC
-====================================================== */
+/* =========================================================
+   IMPORTANT:
+   لو الصورة أو الصوت تأخروا لا تعلق المقدمة
+========================================================= */
 
 window.addEventListener(
-    "keydown",
-    function(e){
+    "load",
+    function(){
 
-        if(e.key === "Escape"){
+        /* لا نفتح تلقائيًا؛
+           المستخدم لازم يضغط لتشغيل الصوت */
 
-            closeSheet();
-
-        }
-
+    },
+    {
+        once:true
     }
 );
-
-
-})();
 
 </script>
 
 
 </body>
-  </html>
+</html>
